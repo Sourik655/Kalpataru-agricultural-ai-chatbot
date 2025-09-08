@@ -2,12 +2,8 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import google.generativeai as genai
-import os
-
-GEMINI_API_KEY = os.getenv("AIzaSyDMNSRYMh4RJbn-iOo0r_eAq40j43u8B6s")
-if not GEMINI_API_KEY:
-    raise ValueError("❌ GOOGLE_API_KEY is not set in environment variables!")
-
+# Configure Gemini API Key
+GEMINI_API_KEY = "AIzaSyDMNSRYMh4RJbn-iOo0r_eAq40j43u8B6s"
 genai.configure(api_key=GEMINI_API_KEY)
 
 app = FastAPI()
