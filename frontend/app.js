@@ -1,4 +1,8 @@
-const API_URL = "https://kalpataru-backend.onrender.com";  // Backend URL
+
+
+
+const API_URL = "";
+  // Backend URL
 
 const chatBox = document.getElementById("chat-box");
 const userInput = document.getElementById("user-input");
@@ -288,4 +292,5 @@ stopBtn.addEventListener("click", () => {
 
 // Load chat history
 window.onload = loadHistory;
+
 
