@@ -2,6 +2,9 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import google.generativeai as genai
+import os
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 # Configure Gemini API Key
 GEMINI_API_KEY = "AIzaSyDMNSRYMh4RJbn-iOo0r_eAq40j43u8B6s"
