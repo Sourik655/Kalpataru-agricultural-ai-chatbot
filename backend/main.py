@@ -2,6 +2,7 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import google.generativeai as genai
+
 # Configure Gemini API Key
 GEMINI_API_KEY = "AIzaSyDMNSRYMh4RJbn-iOo0r_eAq40j43u8B6s"
 genai.configure(api_key=GEMINI_API_KEY)
@@ -45,7 +46,12 @@ async def chat(payload: ChatIn):
         - Long-term advice for healthy growth, pest control, and soil care
         """
     else:
-        instructions = "Answer in simple language, briefly."
+        instructions = instructions = """
+    You are 🌱 Kalpataru, an AI Farming & General Assistant.
+    Provide **clear, useful, and moderately detailed** answers.
+    Always explain step by step and give practical examples.
+    """
+
 
     prompt = f"""
     The farmer said:
@@ -67,7 +73,7 @@ async def chat(payload: ChatIn):
 @app.post("/diagnose")
 async def diagnose(file: UploadFile = File(...)):
     try:
-        model = genai.GenerativeModel("gemini-1.5")
+        model = genai.GenerativeModel("gemini-1.5-flash")
         img = await file.read()
         response = model.generate_content(
             [
